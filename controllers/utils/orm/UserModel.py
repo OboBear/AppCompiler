@@ -9,7 +9,7 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 # 定义User对象:
-class User(Base):
+class UserModel(Base):
     # 表的名字:
     __tablename__ = 'User'
 
