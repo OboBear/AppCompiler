@@ -4,7 +4,7 @@ from sqlalchemy import Column, String,Integer,create_engine,DateTime
 from sqlalchemy import func
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
-from  OrmUtil import *
+from OrmUtil import *
 from datetime import *
 
 # 创建对象的基类:
@@ -21,44 +21,25 @@ class LoginModel(Base):
     loginType = Column(String)
     loginAccessToken = Column(String)
 
+# 插入新纪录
+def insertLogin(userAccount,loginPosition,loginType,loginAccessToken):
 
-from random import Random
-def random_str(randomlength=8):
-    str = ''
-    chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789'
-    length = len(chars) - 1
-    random = Random()
-    for i in range(randomlength):
-        str+=chars[random.randint(0, length)]
-    return str
-
-def Test():
-        # loginModel = LoginModel(loginId='1',userAccount='1',loginPosition='123',loginType='web',loginAccessToken='fasd')
         session = getSession()
-
         loginModelArray = session.query(LoginModel).order_by(LoginModel.loginId).all()
-
-        lastLogin = loginModelArray[len(loginModelArray)-1]
-        nextLoginId = long(lastLogin.loginId) + 1
+        lastLoginId = 1000001
+        if len(loginModelArray) >= 1:
+            lastLoginId = loginModelArray[len(loginModelArray)-1].loginId
+        nextLoginId = long(lastLoginId) + 1
         nextLoginId = str(nextLoginId)
         currentTime = datetime.now()
-
-        print(nextLoginId)
-
-        print(lastLogin.loginPosition)
-
-        #
-        # print 'now():', datetime.now()
-
-        loginAccessToken = random_str(16)
-        loginModel = LoginModel(loginId=nextLoginId,userAccount='1',loginTime=currentTime,loginPosition='123',loginType='web',loginAccessToken=loginAccessToken)
-        #
-        # # 添加到session:
+        loginModel = LoginModel(loginId=nextLoginId,userAccount=userAccount,
+                                loginTime=currentTime,loginPosition=loginPosition,
+                                loginType=loginType,loginAccessToken=loginAccessToken)
+        # 添加到session:
         session.add(loginModel)
-        # # 提交即保存到数据库:
+        # 提交即保存到数据库:
         session.commit()
-        # # 关闭session:
+        # 关闭session:
         session.close()
         return 'success'
 
-Test()
