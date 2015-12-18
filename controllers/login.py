@@ -28,5 +28,14 @@ class login:
         updateUser(userModel.userAccount,loginType,loginAccessToken)
         return 'success'
 
+class autoLogin:
+    def GET(self):
+        render = web.template.render('templates/demo')
+        return render.login()
+    def POST(self):
+        postParams = web.input()
+        loginAccessToken = postParams.get('loginAccessToken')
+        loginType = postParams.get('type')
+
 
 
