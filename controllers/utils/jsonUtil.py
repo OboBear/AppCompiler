@@ -1,6 +1,6 @@
 # -*- encoding: UTF-8 -*-
 
-import json
+import jsonJJ
 
 class Student:
     name = ''
@@ -93,4 +93,4 @@ class HuaJie:
 
 obj= HuaJie()
 print 'iii'
-print "sss:"+json.dumps(obj)
+print "sss:" + jsonJJ.dumps(obj)
