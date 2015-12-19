@@ -4,7 +4,6 @@ from sqlalchemy import Column, String,Integer,create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from OrmUtil import *
-import json
 
 # 创建对象的基类:
 Base = declarative_base()
@@ -41,7 +40,6 @@ def getUserByEmailAndPassword(userEmail,userPassword):
     return (user,'成功搜索')
 # getUserByEmailAndPassword('634468460@qq.com','12341234')
 
-
 # 通过账号查找User
 def getUserByAccount(userAccount):
     session = getSession()
@@ -50,12 +48,7 @@ def getUserByAccount(userAccount):
     if user == None:
         print("找不到用户")
     return user
-
-user = getUserByAccount('1')
-# print(json.dumps( user.__dict__ ))
-print( user.userAccessTokenForWeb )
-for property, value in vars(user).iteritems():
-    print property, ": ", value
+# user = getUserByAccount('1')
 
 # 更新user accessToken
 def updateUser(userAccount,loginType,accessToken):
