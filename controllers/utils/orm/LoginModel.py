@@ -22,6 +22,7 @@ class LoginModel(Base):
     loginPosition = Column(String)
     loginType = Column(String)
     loginAccessToken = Column(String)
+    loginIp = Column(String)
 
 def getLastLogin():
     session = getSession()
@@ -32,7 +33,7 @@ def getLastLogin():
         lastLogin = loginModelArray[len(loginModelArray) - 1]
     return lastLogin
 
-def insertLogin(userAccount,loginAccount, loginPosition, loginType, loginAccessToken):
+def insertLogin(userAccount,loginAccount, loginPosition, loginType, loginAccessToken,loginIp):
     session = getSession()
     nextLoginId = long(getLastLogin().loginId) + 1
     nextLoginId = str(nextLoginId)
@@ -43,7 +44,8 @@ def insertLogin(userAccount,loginAccount, loginPosition, loginType, loginAccessT
                             loginTime=currentTime,
                             loginPosition=loginPosition,
                             loginType=loginType,
-                            loginAccessToken=loginAccessToken)
+                            loginAccessToken=loginAccessToken,
+                            loginIp=loginIp)
     # 添加到session:
     session.add(loginModel)
     # 提交即保存到数据库:

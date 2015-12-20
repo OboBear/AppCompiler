@@ -10,6 +10,9 @@ from utils.json.JsonUtil import *
 class login:
     def GET(self):
 
+        ippp = web.ctx.ip
+        print (ippp)
+
         render = web.template.render('templates/demo')
         return render.login()
 
@@ -19,6 +22,7 @@ class login:
         userPhoneNum = postParams.get('userPhoneNum')
         password = postParams.get('password')
         loginType = postParams.get('type')
+        loginIp = web.ctx.ip
         print(u"get: userEmail:%s userPhoneNum:%s password:%s loginType:%s"%(userEmail,userPhoneNum,password,loginType))
 
         userModel = None
@@ -41,7 +45,8 @@ class login:
                         loginAccount=loginAccount,
                         loginPosition='hangzhou',
                         loginType=loginType,
-                        loginAccessToken=loginAccessToken)
+                        loginAccessToken=loginAccessToken,
+                        loginIp=loginIp)
             updateUser(userModel.userAccount,loginType,loginAccessToken)
             backResult=JsonBaseClass()
             backResult.loginAccessToken=loginAccessToken
