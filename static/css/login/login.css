@@ -1,0 +1,24 @@
+.btn-register {
+	background: #999999;
+	border-color: #FFFFFF;
+}
+
+.btn-register:hover,
+.btn-register:focus {
+	background-color: #AAAAAA;
+	border-color: #FFFFFF;
+	background-position: 0 -15px;
+}
+
+.btn-register:active,
+.btn-register.active {
+	background-color: #AAAAAA;
+	border-color: #AAAAAA;
+}
+
+.btn-register:disabled,
+.btn-register[disabled] {
+	background-color: #AAAAAA;
+	background-image: none;
+	border-color: #FFFFFF;
+}
