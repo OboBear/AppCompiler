@@ -50,6 +50,7 @@ def getUserByAccount(userAccount):
     return user
 # user = getUserByAccount('1')
 
+
 # 更新user accessToken
 def updateUser(userAccount,loginType,accessToken):
 

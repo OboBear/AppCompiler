@@ -1,6 +1,6 @@
 import json
-class JsonBaseClass(dict):
 
+class JsonBaseClass(dict):
     def __getattr__(self,name):
         if name in self:
             return self[name]
