@@ -15,20 +15,20 @@ class JsonBaseClass(dict):
         self.__setitem__(name,value)
 
     def getJson(self):
-        return json.dumps(self)
+        backJson=json.dumps(self)
+        print(backJson)
+        return backJson
 
 class BackResult(JsonBaseClass):
     errorCode=0
     errorMsg=""
     result=JsonBaseClass()
 
-    def __init__(self,result):
-        self.__init__(result=result,errorCode=0,errorMsg="")
-
-    def __init__(self,errorCode,errorMsg):
-        self.__init__(result="",errorCode=errorCode,errorMsg=errorMsg)
-
-    def __init__(self,result,errorCode,errorMsg):
+    def __init__(self,result="",errorCode=0,errorMsg=""):
         self.result=result
         self.errorCode=errorCode
         self.errorMsg=errorMsg
+    def setErrorMsg(self,errorMsg=""):
+        if (errorMsg != ""):
+            self.errorCode=1
+            self.errorMsg=errorMsg

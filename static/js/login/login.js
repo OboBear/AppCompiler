@@ -1,40 +1,38 @@
-! function($) {
-	$(document).on("click", "ul.nav li.parent > a > span.icon", function() {
-		$(this).find('em:first').toggleClass("glyphicon-minus");
-	});
-	$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-}(window.jQuery);
-
-$(window).on('resize', function() {
-	if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-})
-$(window).on('resize', function() {
-	if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-})
+//! function($) {
+//	$(document).on("click", "ul.nav li.parent > a > span.icon", function() {
+//		$(this).find('em:first').toggleClass("glyphicon-minus");
+//	});
+//	$(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+//}(window.jQuery);
+//
+//$(window).on('resize', function() {
+//	if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+//})
+//$(window).on('resize', function() {
+//	if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+//})
 
 
 
 function loginAction() {
-
 	var account = document.getElementById('email');
 	var password = document.getElementById('password');
-
+//	alert("accutnL"+account.value+password.value)
 	var isEmail = testEmail(account.value);
-
-	//	if (!isEmail) {
-	//		alert("请输入正确的邮箱")
-	//		return;
-	//	}
-	//	
-	//	if (password.length < 6) {
-	//		alert("密码不能少于6位")
-	//		return;
-	//	}
-
-	//	document.location.href = "/index";
-
+	var isPhone = testMobile(account.value);
+	if (!isEmail && !isPhone) {
+		alert("请输入正确的账号")
+		return;
+	}	
+	if (password.value.length < 6) {
+		alert("密码不能少于6位")
+		return;
+	}
 	var postParams="";
-	postParams += 'account='+account.value
+	if (isEmail)
+		postParams += 'userEmail='+account.value
+	else if(isPhone)
+		postParams += 'userPhoneNum='+account.value
 	postParams += '&password='+password.value
 	postParams += '&type=web'
 	send("/login", postParams, callBackLogin);
@@ -49,9 +47,23 @@ function testEmail(str) {
 	}
 }
 
+function testMobile(str) {
+    var re = /^1\d{10}$/
+    if (re.test(str)) {
+        return true
+    } else {
+        return false
+    }
+}
+
 function callBackLogin(result) {
-	eval("alert('" + result + "')")
-	if (result == ("success")) {
-		document.location.href = "/index";
+
+	var jsonResult = eval("("+result+")");
+//	alert(jsonResult.errorCode)
+	if (jsonResult.errorCode == 0) {
+		document.location.href = "/index"
+	}
+	else {
+		alert(jsonResult.errorMsg)
 	}
 }

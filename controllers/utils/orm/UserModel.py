@@ -26,19 +26,20 @@ class UserModel(Base):
     userAccessTokenForAndroid = Column(String)
     userAccessTokenForIOS = Column(String)
 
-# 通过账号密码获取User
-def getUserByEmailAndPassword(userEmail,userPassword):
+# 通过Email获取User
+def getUserByEmail(userEmail):
     session = getSession()
     user = session.query(UserModel).filter(UserModel.userEmail == userEmail).first()
     session.close()
-    if user == None:
-        print("找不到用户")
-        return (None,'找不到用户')
-    if user.userPassWord != userPassword:
-        print("密码不正确")
-        return (None,'密码不正确')
-    return (user,'成功搜索')
-# getUserByEmailAndPassword('634468460@qq.com','12341234')
+    return user
+# getUserByEmailAndPassword('634468123460@qq.com')
+# 通过phoneNumber获取User
+def getUserByPhone(userPhoneNum):
+    session = getSession()
+    user = session.query(UserModel).filter(UserModel.userPhoneNum == userPhoneNum).first()
+    session.close()
+    return user
+# getUserByEmailAndPassword('157571156721')
 
 # 通过账号查找User
 def getUserByAccount(userAccount):

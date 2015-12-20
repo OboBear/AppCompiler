@@ -9,25 +9,45 @@ from utils.json.JsonUtil import *
 
 class login:
     def GET(self):
+
         render = web.template.render('templates/demo')
         return render.login()
 
     def POST(self):
         postParams = web.input()
-        account = postParams.get('account')
+        userEmail = postParams.get('userEmail')
+        userPhoneNum = postParams.get('userPhoneNum')
         password = postParams.get('password')
         loginType = postParams.get('type')
-        print(account+":"+password+":"+loginType)
+        print(u"get: userEmail:%s userPhoneNum:%s password:%s loginType:%s"%(userEmail,userPhoneNum,password,loginType))
 
-        (userModel,loginResult) = getUserByEmailAndPassword(account,password)
+        userModel = None
+        if(userEmail != None and userEmail != ""):
+            userModel = getUserByEmail(userEmail)
+        elif (userPhoneNum != None and userPhoneNum != ""):
+            userModel = getUserByPhone(userPhoneNum)
 
-        if userModel==None:
-            return loginResult
+        backJsonResult = BackResult(result="",errorCode=0,errorMsg="")
+        if userModel == None:
+            backJsonResult.setErrorMsg(errorMsg="账号错误")
+        elif userModel.userPassWord != password:
+            backJsonResult.setErrorMsg(errorMsg="密码不正确")
+        else:
+            loginAccessToken = random_str(28)
+            loginAccount=userEmail
+            if userEmail == None:
+                loginAccount=userPhoneNum
+            insertLogin(userAccount=userModel.userAccount,
+                        loginAccount=loginAccount,
+                        loginPosition='hangzhou',
+                        loginType=loginType,
+                        loginAccessToken=loginAccessToken)
+            updateUser(userModel.userAccount,loginType,loginAccessToken)
+            backResult=JsonBaseClass()
+            backResult.loginAccessToken=loginAccessToken
+            backJsonResult.result=backResult
 
-        loginAccessToken = random_str(16)
-        insertLogin(userModel.userAccount,'hangzhou',loginType,loginAccessToken)
-        updateUser(userModel.userAccount,loginType,loginAccessToken)
-        return 'success'
+        return backJsonResult.getJson()
 
 class autoLogin:
     def GET(self):
