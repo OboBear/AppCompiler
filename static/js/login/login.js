@@ -11,9 +11,6 @@
 //$(window).on('resize', function() {
 //	if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
 //})
-
-
-
 function loginAction() {
 	var account = document.getElementById('email');
 	var password = document.getElementById('password');
@@ -38,32 +35,16 @@ function loginAction() {
 	send("/login", postParams, callBackLogin);
 }
 
-function testEmail(str) {
-	var reg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-	if (reg.test(str)) {
-		return true
-	} else {
-		return false
-	}
-}
-
-function testMobile(str) {
-    var re = /^1\d{10}$/
-    if (re.test(str)) {
-        return true
-    } else {
-        return false
-    }
-}
-
 function callBackLogin(result) {
-
 	var jsonResult = eval("("+result+")");
-//	alert(jsonResult.errorCode)
 	if (jsonResult.errorCode == 0) {
 		document.location.href = "/index"
 	}
 	else {
 		alert(jsonResult.errorMsg)
 	}
+}
+
+function registerAction() {
+	document.location.href = "/register"
 }

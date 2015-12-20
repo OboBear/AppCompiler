@@ -10,9 +10,6 @@ from utils.json.JsonUtil import *
 class login:
     def GET(self):
 
-        ippp = web.ctx.ip
-        print (ippp)
-
         render = web.template.render('templates/demo')
         return render.login()
 

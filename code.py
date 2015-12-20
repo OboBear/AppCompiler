@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 from controllers.login import *
 from controllers.index import *
+from controllers.register import *
 from controllers.error import *
 
 "使用https"
@@ -13,7 +14,8 @@ from controllers.error import *
 urls = (
     '/','index',
     '/index','index',
-    '/login','login'
+    '/login','login',
+    '/register','register'
 )
 
 if __name__ == "__main__":
