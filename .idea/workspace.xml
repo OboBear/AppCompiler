@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="05690035-7e88-4b8d-85d2-dfd719e9ee46" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/code.py" afterPath="$PROJECT_DIR$/code.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/login.py" afterPath="$PROJECT_DIR$/controllers/login.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/login/login.js" afterPath="$PROJECT_DIR$/static/js/login/login.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/login/utils.js" afterPath="$PROJECT_DIR$/static/js/login/utils.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/demo/login.html" afterPath="$PROJECT_DIR$/templates/demo/login.html" />
     </list>
     <ignored path="APPBuilder.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,8 +60,8 @@
       <file leaf-file-name="register.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/register.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38961038">
-              <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.46753246">
+              <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
               <folding />
             </state>
           </provider>
@@ -582,7 +577,13 @@
       <option name="project" value="LOCAL" />
       <updated>1450623966865</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1.add register.html&#10;">
+      <created>1450626945404</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1450626945404</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -629,7 +630,8 @@
     <MESSAGE value="1.add jsonUtil&#10;" />
     <MESSAGE value="1.update login&#10;" />
     <MESSAGE value="1.add ip&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="1.add ip&#10;" />
+    <MESSAGE value="1.add register.html&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="1.add register.html&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1025,8 +1027,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/register.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38961038">
-          <caret line="10" column="32" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+        <state vertical-scroll-proportion="0.46753246">
+          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
           <folding />
         </state>
       </provider>
