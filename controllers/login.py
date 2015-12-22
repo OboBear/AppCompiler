@@ -9,7 +9,6 @@ from utils.json.JsonUtil import *
 
 class login:
     def GET(self):
-
         render = web.template.render('templates/demo')
         return render.login()
 
@@ -17,10 +16,10 @@ class login:
         postParams = web.input()
         userEmail = postParams.get('userEmail')
         userPhoneNum = postParams.get('userPhoneNum')
-        password = postParams.get('password')
-        loginType = postParams.get('type')
+        userPassword = postParams.get('userPassword')
+        loginType = postParams.get('loginType')
         loginIp = web.ctx.ip
-        print(u"get: userEmail:%s userPhoneNum:%s password:%s loginType:%s"%(userEmail,userPhoneNum,password,loginType))
+        print(u"get: userEmail:%s userPhoneNum:%s password:%s loginType:%s"%(userEmail,userPhoneNum,userPassword,loginType))
 
         userModel = None
         if(userEmail != None and userEmail != ""):
@@ -31,7 +30,7 @@ class login:
         backJsonResult = BackResult(result="",errorCode=0,errorMsg="")
         if userModel == None:
             backJsonResult.setErrorMsg(errorMsg="账号错误")
-        elif userModel.userPassWord != password:
+        elif userModel.userPassWord != userPassword:
             backJsonResult.setErrorMsg(errorMsg="密码不正确")
         else:
             loginAccessToken = random_str(28)

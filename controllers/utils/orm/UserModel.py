@@ -53,6 +53,29 @@ def getUserByAccount(userAccount):
     return user
 # user = getUserByAccount('1')
 
+def getUserByAccessToken(userAccessToken,loginType):
+    session = getSession()
+    user = None
+    if loginType == 'web':
+        user = session.query(UserModel).filter(UserModel.userAccessTokenForWeb == userAccessToken).first()
+    if loginType == 'android':
+        user = session.query(UserModel).filter(UserModel.userAccessTokenForAndroid == userAccessToken).first()
+    if loginType == 'ios':
+        user = session.query(UserModel).filter(UserModel.userAccessTokenForIOS == userAccessToken).first()
+    if user == None:
+        print("找不到用户")
+    return user
+
+
+# user = getUserByAccessToken('3333','android')
+# items = vars(user).items()
+# items.pop(1)
+# for name,value in items:
+#       print('%s=%s'%(name,value))
+# print(user)
+# print(user.__dict__)
+
+
 
 # 更新user accessToken
 def updateUser(userAccount,loginType,accessToken):
@@ -99,4 +122,5 @@ def insertUser(userPhoneNum,userPassWord):
     return (True,"账号插入成功")
 
 # insertUser(userEmail="7781723@hwe.com",userPassWord="12341234")
+
 

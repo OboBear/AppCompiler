@@ -18,17 +18,17 @@ class register:
         identifyCode=postParams.get('identifyCode')
         userIdentifyCode = getRegisterIdentifyCode(userPhoneNum)
         if userIdentifyCode == None:
-            return BackResult().setErrorMsg("请重新获取验证码").getJson()
+            return BackResult().setErrorMsg("请重新获取验证码")
         if userIdentifyCode != identifyCode:
-            return BackResult().setErrorMsg("请重新获取验证码").getJson()
+            return BackResult().setErrorMsg("请重新获取验证码")
         (insterFlag,errorMsg)=insertUser(userPhoneNum=userPhoneNum,userPassWord=password)
         if insterFlag==False:
             result=JsonBaseClass()
             result.result=errorMsg
-            return BackResult().setErrorMsg(result).getJson()
+            return BackResult().setErrorMsg(result)
         result=JsonBaseClass()
         result.result="用户注册成功"
-        return BackResult().setSuccessResult(result).getJson()
+        return BackResult().setSuccessResult(result)
 
 class identifyCode:
     def POST(self):

@@ -30,8 +30,8 @@ function loginAction() {
 		postParams += 'userEmail='+account.value
 	else if(isPhone)
 		postParams += 'userPhoneNum='+account.value
-	postParams += '&password='+password.value
-	postParams += '&type=web'
+	postParams += '&userPassword='+password.value
+	postParams += '&loginType=web'
 	send("/login", postParams, callBackLogin);
 }
 

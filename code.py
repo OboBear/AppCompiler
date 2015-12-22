@@ -2,7 +2,9 @@
 from controllers.login import *
 from controllers.index import *
 from controllers.register import *
+from controllers.user import *
 from controllers.error import *
+
 
 # "使用https"
 # from web.wsgiserver import CherryPyWSGIServer
@@ -17,6 +19,7 @@ urls = (
     '/login','login',
     '/register','register',
     '/identifyCode','identifyCode',
+    '/user','user',
     # '/testJson','testJson'
 )
 
