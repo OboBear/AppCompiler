@@ -78,8 +78,8 @@ def updateUser(userAccount,loginType,accessToken):
 def insertUser(userPhoneNum,userPassWord):
     user = getUserByPhone(userPhoneNum)
     if user!=None:
-        print("该账号已经存在")
-        return False
+        errorMsg="该账号已经存在"
+        return (False,errorMsg)
 
     session = getSession()
     userModelArray = session.query(UserModel).order_by(UserModel.userAccount).all()
@@ -96,6 +96,7 @@ def insertUser(userPhoneNum,userPassWord):
     session.add(newUserModel)
     session.commit()
     session.close()
+    return (True,"账号插入成功")
 
 # insertUser(userEmail="7781723@hwe.com",userPassWord="12341234")
 
