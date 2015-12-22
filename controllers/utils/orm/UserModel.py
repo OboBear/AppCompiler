@@ -1,9 +1,10 @@
 # -*- coding: UTF-8 -*-
 
-from sqlalchemy import Column, String,Integer,create_engine
+from sqlalchemy import Column, String,Integer,DateTime,create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from OrmUtil import *
+from datetime import *
 
 # 创建对象的基类:
 Base = declarative_base()
@@ -25,6 +26,7 @@ class UserModel(Base):
     userAccessTokenForWeb = Column(String)
     userAccessTokenForAndroid = Column(String)
     userAccessTokenForIOS = Column(String)
+    userRegisterTime = Column(DateTime)
 
 # 通过Email获取User
 def getUserByEmail(userEmail):
@@ -70,4 +72,30 @@ def updateUser(userAccount,loginType,accessToken):
     session.commit()
     session.close()
     return True
+
+
+# 新建用户
+def insertUser(userPhoneNum,userPassWord):
+    user = getUserByPhone(userPhoneNum)
+    if user!=None:
+        print("该账号已经存在")
+        return False
+
+    session = getSession()
+    userModelArray = session.query(UserModel).order_by(UserModel.userAccount).all()
+    lastUser = UserModel(userAccount=1000001)
+    if len(userModelArray) >= 1:
+        lastUser = userModelArray[len(userModelArray) - 1]
+
+    nextUserAccount = long(lastUser.userAccount) + 1
+    currentTime = datetime.now()
+    newUserModel = UserModel(userAccount=nextUserAccount,
+                             userPhoneNum=userPhoneNum,
+                             userPassWord=userPassWord,
+                             userRegisterTime=currentTime)
+    session.add(newUserModel)
+    session.commit()
+    session.close()
+
+# insertUser(userEmail="7781723@hwe.com",userPassWord="12341234")
 

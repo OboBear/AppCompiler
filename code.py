@@ -4,7 +4,7 @@ from controllers.index import *
 from controllers.register import *
 from controllers.error import *
 
-"使用https"
+# "使用https"
 # from web.wsgiserver import CherryPyWSGIServer
 # from web.wsgiserver.ssl_builtin import BuiltinSSLAdapter
 # ssl_certificate = "/Users/apple/Desktop/Workspace/Python/openssl/key/cacert.pem"
@@ -15,8 +15,27 @@ urls = (
     '/','index',
     '/index','index',
     '/login','login',
-    '/register','register'
+    '/register','register',
+    '/identifyCode','identifyCode',
+    # '/testJson','testJson'
 )
+
+
+# class testJson:
+#     def GET(self):
+#         user = getUserByAccount('1')
+#         jsonBack = BackResult()
+#         result = JsonBaseClass()
+#         result.userAccount=user.userAccount
+#         result.useruserName=user.userNickName
+#         jsonBack.result=result
+#         return jsonBack.getJson()
+#
+#     def POST(self):
+#         postParams = web.input()
+#         Result = postParams.get('Result')
+#         print(Result)
+
 
 if __name__ == "__main__":
     app = web.application(urls,globals())
