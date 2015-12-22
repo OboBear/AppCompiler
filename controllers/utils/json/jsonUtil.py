@@ -11,12 +11,11 @@ class JsonBaseClass(dict):
         return n
 
     def __setattr__(self,name,value):
-        print name
         self.__setitem__(name,value)
 
     def getJson(self):
         backJson=json.dumps(self)
-        print(backJson)
+        print("backResult:"+backJson)
         return backJson
 
 class BackResult(JsonBaseClass):
@@ -37,3 +36,4 @@ class BackResult(JsonBaseClass):
         self.result=result
         self.errorCode=0
         self.errorMsg=""
+        return self
