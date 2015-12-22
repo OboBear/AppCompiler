@@ -21,6 +21,6 @@ class user:
         result.userInfo.userAge=user.userAge
         result.userInfo.userCity=user.userCity
         result.userInfo.userRegisterTime=(u"%s"%user.userRegisterTime)
-        print(user.userRegisterTime)
+        print(BackResult().setSuccessResult(result))
         return BackResult().setSuccessResult(result)
 

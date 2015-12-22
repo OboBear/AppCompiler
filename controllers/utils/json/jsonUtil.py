@@ -31,9 +31,9 @@ class BackResult(JsonBaseClass):
         if (errorMsg != ""):
             self.errorCode=1
             self.errorMsg=errorMsg
-        return self
+        return self.getJson()
     def setSuccessResult(self,result=""):
         self.result=result
         self.errorCode=0
         self.errorMsg=""
-        return self
+        return self.getJson()
