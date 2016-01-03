@@ -1,9 +1,10 @@
 # -*- coding: UTF-8 -*-
-from controllers.login import *
+from controllers.LoginController import *
 from controllers.index import *
-from controllers.register import *
-from controllers.user import *
-from controllers.error import *
+from controllers.RegisterController import *
+from controllers.UserController import *
+from controllers.ErrorController import *
+from controllers.AppController import *
 
 
 # "使用https"
@@ -16,10 +17,6 @@ from controllers.error import *
 urls = (
     '/','index',
     '/index','index',
-    '/login','login',
-    '/register','register',
-    '/identifyCode','identifyCode',
-    '/user','user',
     # '/testJson','testJson'
 )
 
@@ -39,9 +36,24 @@ urls = (
 #         Result = postParams.get('Result')
 #         print(Result)
 
+def getUrls():
+
+    targetUrl = urls
+
+    # 登录相关
+    targetUrl += LOGIN_URLS
+    # 注册相关
+    targetUrl += REGISTER_URLS
+    # 用户相关
+    targetUrl += USER_URLS
+    # App相关
+    targetUrl += APP_URLS
+
+    return targetUrl
+
 
 if __name__ == "__main__":
-    app = web.application(urls,globals())
+    app = web.application(getUrls(),globals())
     app.notfound = notfound
     app.internalerror = internalerror
     app.run()

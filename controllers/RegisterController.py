@@ -5,6 +5,9 @@ from utils.orm.UserModel import *
 from utils.json.JsonUtil import *
 
 
+REGISTER_URLS = ('/register','register',
+                '/identifyCode','identifyCode',)
+
 class register:
 
     def GET(self):

@@ -7,7 +7,9 @@ from utils.util import *
 from utils.orm.OrmUtil import *
 from utils.json.JsonUtil import *
 
-class login:
+LOGIN_URLS = ('/login','LoginController')
+
+class LoginController:
     def GET(self):
         render = web.template.render('templates/demo')
         return render.login()

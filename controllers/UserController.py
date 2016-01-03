@@ -4,6 +4,8 @@ import web
 from utils.orm.UserModel import *
 from utils.json.JsonUtil import *
 
+USER_URLS = ('/user','user',)
+
 class user:
     def POST(self):
         postParams=web.input()
