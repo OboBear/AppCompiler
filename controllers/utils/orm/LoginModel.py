@@ -16,7 +16,7 @@ class LoginModel(Base):
     __tablename__ = 'Login'
     # 表的结构:
     loginId = Column(String, primary_key=True)
-    userAccount = Column(String)
+    userId = Column(String)
     loginAccount = Column(String)
     loginTime = Column(DateTime)
     loginPosition = Column(String)
@@ -33,13 +33,13 @@ def getLastLogin():
         lastLogin = loginModelArray[len(loginModelArray) - 1]
     return lastLogin
 
-def insertLogin(userAccount,loginAccount, loginPosition, loginType, loginAccessToken,loginIp):
+def insertLogin(userId,loginAccount, loginPosition, loginType, loginAccessToken,loginIp):
     session = getSession()
     nextLoginId = long(getLastLogin().loginId) + 1
     nextLoginId = str(nextLoginId)
     currentTime = datetime.now()
     loginModel = LoginModel(loginId=nextLoginId,
-                            userAccount=userAccount,
+                            userId=userId,
                             loginAccount=loginAccount,
                             loginTime=currentTime,
                             loginPosition=loginPosition,

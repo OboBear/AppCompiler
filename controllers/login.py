@@ -19,7 +19,7 @@ class login:
         userPassword = postParams.get('userPassword')
         loginType = postParams.get('loginType')
         loginIp = web.ctx.ip
-        print(u"get: userEmail:%s userPhoneNum:%s password:%s loginType:%s"%(userEmail,userPhoneNum,userPassword,loginType))
+        print(u"get: userEmail:%s userPhoneNum:%s password:%s loginType:%s loginIp:%s"%(userEmail,userPhoneNum,userPassword,loginType,loginIp))
 
         userModel = None
         if(userEmail != None and userEmail != ""):
@@ -37,13 +37,13 @@ class login:
             loginAccount=userEmail
             if userEmail == None:
                 loginAccount=userPhoneNum
-            insertLogin(userAccount=userModel.userAccount,
+            insertLogin(userId=userModel.userId,
                         loginAccount=loginAccount,
                         loginPosition='hangzhou',
                         loginType=loginType,
                         loginAccessToken=loginAccessToken,
                         loginIp=loginIp)
-            updateUser(userModel.userAccount,loginType,loginAccessToken)
+            updateUser(userModel.userId,loginType,loginAccessToken)
             backResult=JsonBaseClass()
             backResult.loginAccessToken=loginAccessToken
             backJsonResult.result=backResult

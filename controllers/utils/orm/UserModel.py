@@ -15,7 +15,7 @@ class UserModel(Base):
     __tablename__ = 'User'
 
     # 表的结构:
-    userAccount = Column(String, primary_key=True)
+    userId = Column(String, primary_key=True)
     userEmail = Column(String)
     userPassWord = Column(String)
     userPhoneNum = Column(String)
@@ -44,9 +44,9 @@ def getUserByPhone(userPhoneNum):
 # getUserByEmailAndPassword('157571156721')
 
 # 通过账号查找User
-def getUserByAccount(userAccount):
+def getUserByAccount(userId):
     session = getSession()
-    user = session.query(UserModel).filter(UserModel.userAccount == userAccount).first()
+    user = session.query(UserModel).filter(UserModel.userId == userId).first()
     session.close()
     if user == None:
         print("找不到用户")
@@ -75,13 +75,11 @@ def getUserByAccessToken(userAccessToken,loginType):
 # print(user)
 # print(user.__dict__)
 
-
-
 # 更新user accessToken
-def updateUser(userAccount,loginType,accessToken):
+def updateUser(userId,loginType,accessToken):
 
     session = getSession()
-    user = session.query(UserModel).filter(UserModel.userAccount == userAccount)
+    user = session.query(UserModel).filter(UserModel.userId == userId)
     if len(user.all()) == 0:
         print('不存在该账号')
         return False
@@ -105,14 +103,14 @@ def insertUser(userPhoneNum,userPassWord):
         return (False,errorMsg)
 
     session = getSession()
-    userModelArray = session.query(UserModel).order_by(UserModel.userAccount).all()
-    lastUser = UserModel(userAccount=1000001)
+    userModelArray = session.query(UserModel).order_by(UserModel.userId).all()
+    lastUser = UserModel(userId=1000001)
     if len(userModelArray) >= 1:
         lastUser = userModelArray[len(userModelArray) - 1]
 
-    nextUserAccount = long(lastUser.userAccount) + 1
+    nextUserId = long(lastUser.userId) + 1
     currentTime = datetime.now()
-    newUserModel = UserModel(userAccount=nextUserAccount,
+    newUserModel = UserModel(userId=nextUserId,
                              userPhoneNum=userPhoneNum,
                              userPassWord=userPassWord,
                              userRegisterTime=currentTime)
