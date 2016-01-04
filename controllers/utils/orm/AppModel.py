@@ -15,10 +15,42 @@ class AppModel(Base):
 
     appId = Column(String, primary_key=True)
     appName = Column(String)
-    appType = Column(DateTime)
+    appType = Column(String)
+    appCreateTime = Column(DateTime)
     appDownLoadUrl = Column(String)
-    appQRCode = Column(String)
+    appQRCodeUrl = Column(String)
     appLinkUrl = Column(String)
     userId = Column(String)
+    runTime = Column(DateTime)
+    runStatus = Column(String)
 
+def insertApp(appName,appType,appLinkUrl,userId):
 
+    session = getSession()
+    appModelArray = session.query(AppModel).order_by(AppModel.appId).all()
+
+    lastAppId = 0
+
+    if (len(appModelArray) >= 1):
+        lastApp = appModelArray[len(appModelArray) - 1]
+        lastAppId = long(lastApp.appId)
+
+    nextAppId = lastAppId + 1
+    createTime = datetime.now()
+    newAppModel = AppModel(
+            appId=nextAppId,
+            appName=appName,
+            appType=appType,
+            appLinkUrl=appLinkUrl,
+            appCreateTime=createTime,
+            userId=userId,
+            runStatus='new',
+    )
+
+    session.add(newAppModel)
+    session.commit()
+    session.close()
+
+    return (True,"App插入成功")
+
+# insertApp("a22","web","www.baidu.com","1")
