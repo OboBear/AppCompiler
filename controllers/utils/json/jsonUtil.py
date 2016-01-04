@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 import json
 
 class JsonBaseClass(dict):
@@ -17,6 +18,9 @@ class JsonBaseClass(dict):
         backJson=json.dumps(self)
         print("backResult:"+backJson)
         return backJson
+
+    def getDic(self):
+        return self.__dict__
 
 class BackResult(JsonBaseClass):
     errorCode=0
@@ -41,3 +45,17 @@ class BackResult(JsonBaseClass):
 def backError(error):
     return BackResult().setErrorMsg(errorMsg=error)
 
+
+def backSuccess(result):
+    return BackResult().setSuccessResult(result=result)
+
+# 自定义类数组转化为单纯的字典数组
+def getPureArrayFromArray(array):
+    resultArray = []
+    for item in array:
+        resultArray.append(item.getDic())
+    return resultArray
+
+# 自定义类数组转化为jsonArray
+def getJsonArrayFromArray(array):
+    return json.dumps(getPureArrayFromArray(array))
