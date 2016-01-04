@@ -6,26 +6,37 @@ from utils.json.JsonUtil import *
 from utils.orm.AppModel import *
 from utils.orm.UserModel import *
 
-import sys
-reload(sys)
-print sys.getdefaultencoding()
-sys.setdefaultencoding("utf-8")
-print sys.getdefaultencoding()
+# import sys
+# reload(sys)
+# print sys.getdefaultencoding()
+# sys.setdefaultencoding("utf-8")
+# print sys.getdefaultencoding()
 
 # app 相关 url
 APP_URLS = (
-    '/app','AppController',     #
+    '/app/list','AppList',     #
     '/app/create','AppCreate',   # 创建app
     '/app/compile','AppCompile', # 运行app
 )
 
-class AppController:
+class AppList:
     def GET(self):
         return 'app get'
 
     def POST(self):
+        postParams = web.input()
+        loginType = postParams.get("loginType")
+        userAccessToken = postParams.get("userAccessToken")
+        print('userAccessToken:'+userAccessToken)
+        if ( loginType == None or userAccessToken == None):
+            return backError("参数不全")
+        currentUser = getUserByAccessToken(userAccessToken=userAccessToken,
+                                           loginType=loginType)
+        if (currentUser == None):
+            return backError("invalidate userAccessToken")
 
-        return 'app post'
+        appList = getAppListByUserId(currentUser.userId)
+        return backSuccess(getPureArrayFromArray(appList))
 
 # 创建
 class AppCreate:
@@ -67,10 +78,15 @@ class AppCreate:
 # 运行
 class AppCompile:
     def GET(self):
+
         return "AppCompile get"
+
+
     def POST(self):
+
         return "AppCompile Post"
 
 
-
-
+# appList = getAppListByUserId('1')
+# print(backSuccess(getPureArrayFromArray(appList)))
+# print(getJsonArrayFromArray(appList))

@@ -5,6 +5,8 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from OrmUtil import *
 from datetime import *
+from json import *
+import json
 
 # 创建对象的基类:
 Base = declarative_base()
@@ -24,6 +26,23 @@ class AppModel(Base):
     runTime = Column(DateTime)
     runStatus = Column(String)
 
+    def getDic(self):
+        dic = self.__dict__
+        dic.pop('_sa_instance_state')
+        if (self.appCreateTime != None):
+            dic['appCreateTime'] = self.appCreateTime.strftime('%Y-%m-%d %H:%M:%S')
+        if (self.runTime != None):
+            dic['runTime'] = self.runTime.strftime('%Y-%m-%d %H:%M:%S')
+
+        return dic
+
+    def getJson(self):
+
+        dic = self.getDic()
+        return JSONEncoder().encode(dic)
+
+
+# 插入新的app
 def insertApp(appName,appType,appLinkUrl,userId):
 
     session = getSession()
@@ -53,4 +72,20 @@ def insertApp(appName,appType,appLinkUrl,userId):
 
     return (True,"App插入成功")
 
-# insertApp("a22","web","www.baidu.com","1")
+# insertApp("a222er","web","www.baidu.com","1")
+
+
+# 获取某个用户的所有app
+def getAppListByUserId(userId):
+
+    session = getSession()
+    appModelArray = session.query(AppModel).filter(AppModel.userId == userId).all()
+    return appModelArray
+
+
+# appList = getAppListByUserId('1')
+# dd = []
+# for a in appList:
+#     dd.append(a.getDic())
+# encodedjson = json.dumps(dd)
+# print(encodedjson)
