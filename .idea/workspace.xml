@@ -101,8 +101,8 @@
       <file leaf-file-name="git.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/git.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.54545456">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.46753246">
+              <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -696,7 +696,13 @@
       <option name="project" value="LOCAL" />
       <updated>1451896107576</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="update git.py&#10;">
+      <created>1451896335140</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1451896335140</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -775,7 +781,8 @@
     <MESSAGE value="change userAccount-&gt; userId&#10;" />
     <MESSAGE value="rename controller &amp; fix struct&#10;" />
     <MESSAGE value="add git.py&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="add git.py&#10;" />
+    <MESSAGE value="update git.py&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="update git.py&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1147,8 +1154,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/git.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54545456">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.46753246">
+          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>

@@ -10,7 +10,7 @@ class git:
     def GET(self):
         # (status,output) = commands.getstatusoutput('bash pull.sh')
         # return "success"
-        os.system('pull.sh')
+        os.system('bash pull.sh')
         return 'success'
 
 if __name__ == "__main__":
