@@ -39,8 +39,7 @@ class AppCreate:
     u'测试:\n'+\
     u'curl -d "userAccessToken="wxOFsAYYLfKyp"&loginType=web&appName=MyApp&appType=web&appLinkUrl="http://m.baidu.com"" "localhost:8080/app/create"'
 
-        print(result)
-        return result
+        return result.encode('gbk')
 
     def POST(self):
 
