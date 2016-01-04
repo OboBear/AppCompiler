@@ -14,9 +14,9 @@ from utils.orm.UserModel import *
 
 # app 相关 url
 APP_URLS = (
-    '/app/list','AppList',     #
-    '/app/create','AppCreate',   # 创建app
-    '/app/compile','AppCompile', # 运行app
+    '/app/list','AppList',          #
+    '/app/create','AppCreate',      # 创建app
+    '/app/compile','AppCompile',    # 运行app
 )
 
 class AppList:
@@ -36,7 +36,7 @@ class AppList:
             return backError("invalidate userAccessToken")
 
         appList = getAppListByUserId(currentUser.userId)
-        return backSuccess(getPureArrayFromArray(appList))
+        return backSuccess(result=getPureArrayFromArray(appList))
 
 # 创建
 class AppCreate:

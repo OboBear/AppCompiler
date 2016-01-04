@@ -9,6 +9,7 @@ class JsonBaseClass(dict):
         n=JsonBaseClass()
         self.__setitem__(name,n)
         self.__setattr__(name,n)
+        
         return n
 
     def __setattr__(self,name,value):
