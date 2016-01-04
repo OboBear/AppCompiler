@@ -37,3 +37,7 @@ class BackResult(JsonBaseClass):
         self.errorCode=0
         self.errorMsg=""
         return self.getJson()
+
+def backError(error):
+    return BackResult().setErrorMsg(errorMsg=error)
+

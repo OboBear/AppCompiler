@@ -1,11 +1,16 @@
 # -*- coding: UTF-8 -*-
-#encoding=utf-8
 
 import web
 import commands
 from utils.json.JsonUtil import *
 from utils.orm.AppModel import *
 from utils.orm.UserModel import *
+
+import sys
+reload(sys)
+print sys.getdefaultencoding()
+sys.setdefaultencoding("utf-8")
+print sys.getdefaultencoding()
 
 # app 相关 url
 APP_URLS = (
@@ -25,7 +30,6 @@ class AppController:
 # 创建
 class AppCreate:
     def GET(self):
-
         result = u'创建app'+\
                u'loginType:用户登录类型  web android ios\n'+\
                u'userAccessToken:accessToken \n'+\
@@ -36,7 +40,6 @@ class AppCreate:
     u'curl -d "userAccessToken="wxOFsAYYLfKyp"&loginType=web&appName=MyApp&appType=web&appLinkUrl="http://m.baidu.com"" "localhost:8080/app/create"'
 
         print(result)
-        # utfRsult = result.decode('utf8')
         return result
 
     def POST(self):
