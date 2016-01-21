@@ -53,7 +53,7 @@ class AppCreate:
 
         # return result.encode('gbk')
 
-        return "{'result':'success'}"
+        return "{\"result\":\"success\"}"
     def POST(self):
 
         postParams = web.input()

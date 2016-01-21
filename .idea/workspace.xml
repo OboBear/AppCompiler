@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05690035-7e88-4b8d-85d2-dfd719e9ee46" name="Default" comment="fix bug&#10;&#10;">
+    <list default="true" id="05690035-7e88-4b8d-85d2-dfd719e9ee46" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/AppController.py" afterPath="$PROJECT_DIR$/controllers/AppController.py" />
     </list>
@@ -37,8 +37,8 @@
       <file leaf-file-name="AppController.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/AppController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6051948">
-              <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0987013">
+              <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
               <folding>
                 <element signature="e#25#35#0" expanded="true" />
               </folding>
@@ -119,8 +119,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="24" />
-    <option name="y" value="231" />
+    <option name="x" value="52" />
+    <option name="y" value="40" />
     <option name="width" value="1260" />
     <option name="height" value="698" />
   </component>
@@ -789,7 +789,13 @@
       <option name="project" value="LOCAL" />
       <updated>1453387066977</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="test">
+      <created>1453389982509</created>
+      <option name="number" value="00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1453389982509</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -816,7 +822,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="24" y="231" width="1260" height="698" extended-state="0" />
+    <frame x="52" y="40" width="1260" height="698" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -875,7 +881,8 @@
     <MESSAGE value="change utf8 to gbk&#10;&#10;" />
     <MESSAGE value="add app/list&#10;&#10;" />
     <MESSAGE value="fix bug&#10;&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug&#10;&#10;" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1238,8 +1245,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/AppController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6051948">
-          <caret line="74" column="8" selection-start-line="74" selection-start-column="8" selection-end-line="74" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0987013">
+          <caret line="48" column="26" selection-start-line="48" selection-start-column="26" selection-end-line="48" selection-end-column="26" />
           <folding>
             <element signature="e#25#35#0" expanded="true" />
           </folding>
