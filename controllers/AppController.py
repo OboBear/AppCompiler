@@ -72,7 +72,7 @@ class AppCreate:
         if (currentUser == None):
             return backError("invalidate userAccessToken")
 
-        (flag,message,appModel) = insertApp(appName=appName,appType=appType,appLinkUrl=appLinkUrl,userId=currentUser.userId)
+        insertApp(appName=appName,appType=appType,appLinkUrl=appLinkUrl,userId=currentUser.userId)
 
         return backSuccess(result="app create success")
 
