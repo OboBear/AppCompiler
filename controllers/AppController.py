@@ -19,6 +19,7 @@ APP_URLS = (
     '/app/compile','AppCompile',    # 运行app
 )
 
+# curl -d "loginType=web&userAccessToken=pvChtoBGBZkbdhVwxOFsAYYLfKyp" "120.27.51.48:10086/app/list"
 class AppList:
     def GET(self):
         return 'app get'
@@ -71,9 +72,9 @@ class AppCreate:
         if (currentUser == None):
             return backError("invalidate userAccessToken")
 
-        insertApp(appName=appName,appType=appType,appLinkUrl=appLinkUrl,userId=currentUser.userId)
+        (flag,message,appModel) = insertApp(appName=appName,appType=appType,appLinkUrl=appLinkUrl,userId=currentUser.userId)
 
-        return 'App Create post'
+        return backSuccess(result="app create success")
 
 # 运行
 class AppCompile:

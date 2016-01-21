@@ -70,7 +70,7 @@ def insertApp(appName,appType,appLinkUrl,userId):
     session.commit()
     session.close()
 
-    return (True,"App插入成功")
+    return (True,"App插入成功",newAppModel)
 
 # insertApp("a222er","web","www.baidu.com","1")
 
